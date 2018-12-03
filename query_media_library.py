@@ -3,7 +3,7 @@ import sys # for exit program mgmt
 import json
 
 try:
-    conn = psycopg2.connect("dbname='media_508' user='jczetta'")
+    conn = psycopg2.connect("dbname='media_508' user='jczetta'") # TODO make correct for you; create database as necessary
     print("Success connecting to database")
 except:
     print("Unable to connect to the database. Check server and credentials.")

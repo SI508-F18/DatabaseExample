@@ -48,6 +48,7 @@ except:
 
 cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
+# For...
 test_media_inst = media_list[0]
 test_song_inst = song_list[0]
 test_movie_inst = movie_list[0]
@@ -113,14 +114,10 @@ conn.commit()
 
 # Insert Movie data into media table, referencing artists
 # First, create a list of movie dictionaries that will hold both the movie information and the artist name information to ref. the other table and build a relationship
-moviedictions = []
-for inst in movie_list:
-    diction = inst.table_rep()
-    diction["artist_name"] = inst.author
-    moviedictions.append(diction)
-sql = "INSERT INTO Movie({},{}, {},{},{},{},{},{},artist_name)".format(*sorted(list(test_movie_inst.table_rep().keys()))) + " VALUES (%({})s, %({})s, %({})s, %({})s, %({})s, %({})s, %({})s,%({})s,%(artist_name)s) ON CONFLICT DO NOTHING".format(*sorted(list(test_movie_inst.table_rep().keys())))
-cur.executemany(sql,moviedictions)
-conn.commit()
+
+
+# TODO: do the same for the movie table
+
 
 # Create additional searches and enter them into tables
 
